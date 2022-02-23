@@ -29,4 +29,5 @@ jobs:
     # Running the Job Programmatically
     - name: Running the Job Programmatically
       run: |
+        source .venv/bin/activate
         dagster job execute -f hello_world.py

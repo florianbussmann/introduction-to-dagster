@@ -1,0 +1,10 @@
+# Project
+.vscode
+.DS_Store
+
+# Environments
+.dagster
+.venv
+
+# Byte-compiled / optimized / DLL files
+__pycache__/

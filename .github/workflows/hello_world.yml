@@ -1,0 +1,32 @@
+name: hello-world
+
+# Only run this when the main branch changes
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+# This job installs dependencies and runs the example job
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    # Install dependencies
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Prepare environment
+      run: |
+        source prepare-env.sh
+
+    # Running the Job Programmatically
+    - name: Running the Job Programmatically
+      run: |
+        dagster job execute -f hello_world.py

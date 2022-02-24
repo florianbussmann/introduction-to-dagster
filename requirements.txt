@@ -1,3 +1,4 @@
 dagit==0.14.1
 dagster==0.14.1
 requests==2.27.1
+pytest==7.0.1

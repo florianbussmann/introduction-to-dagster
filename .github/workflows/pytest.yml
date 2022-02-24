@@ -1,4 +1,4 @@
-name: hello-world
+name: pytest
 
 # Only run this when the main branch changes
 on:
@@ -9,9 +9,9 @@ on:
     branches:
     - main
 
-# This job installs dependencies and runs the example job
+# This job installs dependencies and runs tests
 jobs:
-  hello-world:
+  pytest:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -26,8 +26,8 @@ jobs:
       run: |
         source prepare-env.sh
 
-    # Running the Job Programmatically
-    - name: Running the Job Programmatically
+    # Running pytest
+    - name: Running pytest
       run: |
         source .venv/bin/activate
-        dagster job execute -f hello_world.py
+        python3 -m pytest

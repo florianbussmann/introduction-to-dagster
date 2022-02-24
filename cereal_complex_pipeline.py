@@ -1,15 +1,15 @@
-from dagster import get_dagster_logger, job, op
+from dagster import In, get_dagster_logger, job, op
 
-from cereal_serial_pipeline import download_cereals
+from cereal_serial_pipeline import SimpleDataFrame, download_cereals
 
 
-@op
+@op(ins={"cereals": In(SimpleDataFrame)})
 def find_highest_calorie_cereal(cereals):
     sorted_cereals = list(sorted(cereals, key=lambda cereal: cereal["calories"]))
     return sorted_cereals[-1]["name"]
 
 
-@op
+@op(ins={"cereals": In(SimpleDataFrame)})
 def find_highest_protein_cereal(cereals):
     sorted_cereals = list(sorted(cereals, key=lambda cereal: cereal["protein"]))
     return sorted_cereals[-1]["name"]
